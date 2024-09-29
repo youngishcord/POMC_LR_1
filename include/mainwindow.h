@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTabWidget>
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -10,8 +11,8 @@ public:
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-private: 
-    
+private:
+    QTabWidget* taskTabs;
 };
 
 

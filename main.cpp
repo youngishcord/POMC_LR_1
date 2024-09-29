@@ -1,13 +1,15 @@
 #include <iostream>
 
-#include <QCoreApplication>
+#include <QApplication>
 
 #include "include/mainwindow.h"
 
 int main(int argc, char *argv[]) {
-    QCoreApplication app(argc, argv);
-
+    QApplication app(argc, argv);
     std::cout << "::MESSAGE ON STARTUP::" << "\n";
+
+    MainWindow mainWindow;
+    mainWindow.show();
 
     return app.exec();
 }
