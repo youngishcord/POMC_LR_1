@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QPlainTextEdit>
 
 #include "widgets/customnumberinput.h"
 
@@ -19,9 +20,11 @@ private:
     NumberInput* zValue;
 
     QPushButton* button;
+    QPlainTextEdit* resultText;
+    double calculate();
 
 private slots:
-    void testPrint();
+    void printResult();
 };
 
 // #include "taskOne.moc"

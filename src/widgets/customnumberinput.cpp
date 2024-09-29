@@ -8,7 +8,7 @@
 NumberInput::NumberInput(QWidget* parent)
     : QLineEdit(parent)
 {
-    QRegularExpression rx("\\d+\\.\\d+");
+    QRegularExpression rx("^[+-]?[0-9]+([.][0-9]+)?$");
     this->setValidator(new QRegularExpressionValidator(rx, this));
     this->setFixedHeight(30);
 }
@@ -18,7 +18,7 @@ NumberInput::~NumberInput()
 
 }
 
-float NumberInput::getValue()
+double NumberInput::getValue()
 {
     return this->text().toFloat();
 }

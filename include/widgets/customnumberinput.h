@@ -10,7 +10,7 @@ public:
     explicit NumberInput(QWidget* parent = nullptr);
     ~NumberInput();
 
-    float getValue();
+    double getValue();
 };
 
 #endif // NUMBERINPUT_H

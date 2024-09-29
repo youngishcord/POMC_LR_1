@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
 
-project(MyQtApp VERSION 1.0 LANGUAGES CXX)
+project(LabProject VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -23,12 +23,16 @@ set(SOURCES
     main.cpp
     src/mainwindow.cpp
     src/taskOne.cpp
+    src/taskTwo.cpp
+    src/taskThree.cpp
     src/widgets/customnumberinput.cpp
     )
     
     set(HEADERS
     include/mainwindow.h
     include/taskOne.h
+    include/taskTwo.h
+    include/taskThree.h
     include/widgets/customnumberinput.h
 )
 
@@ -43,5 +47,3 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI})
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
-
-add_definitions(-DQT_STATIC)
