@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "taskOne.h"
 
 #include <QLabel>
 
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget* parent)
     this->setFixedSize(400, 500);
 
     setCentralWidget(taskTabs);
+    taskTabs->addTab(new TaskOneWidget(this), "Задание №1");
     taskTabs->addTab(new QLabel("Tab 1 Content"), "Tab 1");
     taskTabs->addTab(new QLabel("Tab 2 Content"), "Tab 2");
 }

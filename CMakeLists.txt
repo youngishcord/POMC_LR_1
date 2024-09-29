@@ -4,20 +4,32 @@ project(MyQtApp VERSION 1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-static -static-libgcc -static-libstdc++")
+# set(CMAKE_CXX_FLAGS "-static -static-libgcc -static-libstdc++")
 
-set(Qt6_DIR "D:/Qt/6.5.2/mingw_64/lib")
-set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)  # Для форм
+set(CMAKE_AUTORCC ON)  # Для ресурсов
+set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+# set(Qt6_DIR "D:/Qt/6.5.2/mingw_64/lib/cmake/Qt6")
+# set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+
+find_package(Qt6Core REQUIRED)
+find_package(Qt6Gui REQUIRED)
+find_package(Qt6Widgets REQUIRED)
 
 set(SOURCES
     main.cpp
     src/mainwindow.cpp
-)
-
-set(HEADERS
+    src/taskOne.cpp
+    src/widgets/customnumberinput.cpp
+    )
+    
+    set(HEADERS
     include/mainwindow.h
+    include/taskOne.h
+    include/widgets/customnumberinput.h
 )
 
 # set(UI
