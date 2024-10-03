@@ -12,6 +12,7 @@
 #include <QChart>
 #include <QChartView>
 #include <QLineSeries>
+
 // #include <QSplineSeries>
 
 #include <iostream>
@@ -31,26 +32,40 @@ TaskThreeWidget::TaskThreeWidget(QWidget* parent)
 
     QChartView* chartView = new QChartView(this);
     chartView->setChart(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
     layout->addWidget(chartView);
 
     chart->addSeries(spline);
     spline->setName("Function");
 
-    chart->createDefaultAxes();
+    axisX = new QValueAxis();
+    axisX->setRange(-2, -0.75);
+    this->chart->addAxis(axisX, Qt::AlignBottom);
+    spline->attachAxis(axisX);
+
+    axisY = new QValueAxis();
+    axisY->setRange(2, 130);
+    this->chart->addAxis(axisY, Qt::AlignLeft);
+    spline->attachAxis(axisY);
 
     QHBoxLayout* semilay = new QHBoxLayout();
     semilay->addWidget(new QLabel("min x:"));
     semilay->addWidget(xMin);
+    xMin->setText("-0.75");
+
     semilay->addWidget(new QLabel("max x:"));
     semilay->addWidget(xMax);
+    xMax->setText("-2.05");
+
     semilay->addWidget(new QLabel("step:"));
     semilay->addWidget(xStep);
+    xStep->setText("-0.2");
+
     semilay->addWidget(drawBt);
     drawBt->setText("Построить");
     connect(drawBt, &QPushButton::clicked, this, &TaskThreeWidget::drawPlot);
 
     layout->addLayout(semilay);
-    
 
 }
 
@@ -62,16 +77,17 @@ TaskThreeWidget::~TaskThreeWidget()
 void TaskThreeWidget::drawPlot()
 {
     this->spline->clear();
-    double max = -10000;
-    double min = 10000;
+    double max = -100000;
+    double min = 100000;
 
-    for (double x = -0.75; x <= -2.05; x += -0.2) {
+    for (double x = xMin->getValue(); x >= xMax->getValue(); x += xStep->getValue()) {
         double res = this->calculate(x);
         if (res > max) { max = res; }
         if (res < min) { min = res; }
-        this->spline->append(x, res);
+        this->spline->append(x, calculate(x));
     }
-    this->chart->zoomIn(QRect(QPoint(-0.75, min), QPoint(-2.05, max)));
+    axisX->setRange(xMax->getValue(), xMin->getValue());
+    axisY->setRange(min, max);
 }
 
 double TaskThreeWidget::calculate(double x) {

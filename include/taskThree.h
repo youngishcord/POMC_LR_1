@@ -7,6 +7,7 @@
 #include <QRadioButton>
 #include <QSplineSeries>
 #include <QChart>
+#include <QValueAxis>
 
 #include "widgets/customnumberinput.h"
 
@@ -26,6 +27,9 @@ private:
     QSplineSeries* spline;
 
     QChart* chart;
+
+    QValueAxis* axisX;
+    QValueAxis* axisY;
 
     double calculate(double x);
 
