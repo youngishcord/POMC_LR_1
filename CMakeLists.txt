@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
+# cmake_minimum_required(VERSION 3.23 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 project(LabProject VERSION 1.0 LANGUAGES CXX)
 
@@ -18,6 +19,7 @@ set(CMAKE_PREFIX_PATH $ENV{QTDIR})
 find_package(Qt6Core REQUIRED)
 find_package(Qt6Gui REQUIRED)
 find_package(Qt6Widgets REQUIRED)
+find_package(Qt6Charts REQUIRED)
 
 set(SOURCES
     main.cpp
@@ -46,4 +48,4 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Charts)

@@ -5,3 +5,6 @@
 Для прикрепления библиотек можно использовать windeployqt6.exe, который лежит в папке mingw64/bin в qt.
 
 Статически прикрепить библиотеки не удалось.
+
+                "${workspaceFolder}/**",
+                "C:/msys64/mingw64/qt6-static/include/qt6/**",

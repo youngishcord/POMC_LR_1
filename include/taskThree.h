@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QPlainTextEdit>
 #include <QRadioButton>
+#include <QSplineSeries>
+#include <QChart>
 
 #include "widgets/customnumberinput.h"
 
@@ -18,9 +20,17 @@ public:
 private:
     NumberInput* xMin;
     NumberInput* xMax;
+    NumberInput* xStep;
+
+    QPushButton* drawBt;
+    QSplineSeries* spline;
+
+    QChart* chart;
+
+    double calculate(double x);
 
 private slots:
-    void printResult();
+    void drawPlot();
 };
 
 #endif // TASKTHREE_H

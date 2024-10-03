@@ -20,7 +20,7 @@ TaskTwoWidget::TaskTwoWidget(QWidget* parent)
 {
     QGridLayout* layout = new QGridLayout(this);
 
-    QHBoxLayout* radioLay = new QHBoxLayout(this);
+    QHBoxLayout* radioLay = new QHBoxLayout();
     QButtonGroup* radioGroup = new QButtonGroup(this);
     radioGroup->setExclusive(true);
 
