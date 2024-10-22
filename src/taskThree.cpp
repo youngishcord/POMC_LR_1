@@ -80,13 +80,15 @@ void TaskThreeWidget::drawPlot()
     double max = -100000;
     double min = 100000;
 
-    for (double x = xMin->getValue(); x >= xMax->getValue(); x += xStep->getValue()) {
+    qDebug() << "min " << std::min(xMin->getValue(), xMax->getValue()) << '\n';
+    qDebug() << "max " << std::max(xMin->getValue(), xMax->getValue()) << '\n';
+    for (double x = std::min(xMin->getValue(), xMax->getValue()); x <= std::max(xMin->getValue(), xMax->getValue()); x += std::abs(xStep->getValue())) {
         double res = this->calculate(x);
         if (res > max) { max = res; }
         if (res < min) { min = res; }
         this->spline->append(x, calculate(x));
     }
-    axisX->setRange(xMax->getValue(), xMin->getValue());
+    axisX->setRange(std::min(xMin->getValue(), xMax->getValue()), std::max(xMin->getValue(), xMax->getValue()));
     axisY->setRange(min, max);
 }
 
